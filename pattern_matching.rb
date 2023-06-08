@@ -343,6 +343,35 @@
 # # config => db: {user:}
 # puts "1. Connect with user '#{user}'"
 
-users = [{ name: 'Alice', age: 12 }, { name: 'Bob', age: 23 }]
-puts users.any? { |user| user in {name: /B/, age: 20..} }
+# users = [{ name: 'Alice', age: 12 }, { name: 'Bob', age: 23 }]
+# puts users.any? { |user| user in {name: /B/, age: 20..} }
+
+# case [1, 2, 3]
+# in [Integer, Integer]
+#   puts 'matched'
+# else
+#   puts 'not matched'
+# end
+
+# case { a: 1, b: 2, c: 3 }
+# in {a: Integer}
+#   puts 'matched'
+# else
+#   puts 'not matched'
+# end
+
+# case { a: 1, b: 2, c: 3 }
+# in {}
+#   puts 'matched'
+# else
+#   puts 'not matched'
+# end
+
+# case {}
+# in {}
+#   puts 'matched'
+# else
+#   puts 'not matched'
+# end
+
 
