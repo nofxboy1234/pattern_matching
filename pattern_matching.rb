@@ -328,18 +328,21 @@
 # end
 # puts first_language
 
-config = { db: { user: 'admin', password: 'abc123' } }
-# config = { connection: { username: 'admin', password: 'abc123' } }
-case config
-in db: {user:}
-  puts "1. Connect with user '#{user}'"
-in connection: {username:}
-  puts "2. Connect with user '#{username}'"
-else
-  puts 'Unrecognized structure of config'
-end
+# config = { db: { user: 'admin', password: 'abc123' } }
+# # config = { connection: { username: 'admin', password: 'abc123' } }
+# case config
+# in db: {user:}
+#   puts "1. Connect with user '#{user}'"
+# in connection: {username:}
+#   puts "2. Connect with user '#{username}'"
+# else
+#   puts 'Unrecognized structure of config'
+# end
 
-config => {db: {user:}}
-# config => db: {user:}
-puts "1. Connect with user '#{user}'"
+# config => {db: {user:}}
+# # config => db: {user:}
+# puts "1. Connect with user '#{user}'"
+
+users = [{ name: 'Alice', age: 12 }, { name: 'Bob', age: 23 }]
+puts users.any? { |user| user in {name: /B/, age: 20..} }
 
