@@ -551,22 +551,22 @@
 #   puts 'not matched'
 # end
 
-class Point
-  def initialize(x, y)
-    @x = x
-    @y = y
-  end
+# class Point
+#   def initialize(x, y)
+#     @x = x
+#     @y = y
+#   end
 
-  def deconstruct
-    puts 'deconstruct called'
-    [@x, @y]
-  end
+#   def deconstruct
+#     puts 'deconstruct called'
+#     [@x, @y]
+#   end
 
-  def deconstruct_keys(keys)
-    puts "deconstruct_keys called with #{keys.inspect}"
-    { x: @x, y: @y }
-  end
-end
+#   def deconstruct_keys(keys)
+#     puts "deconstruct_keys called with #{keys.inspect}"
+#     { x: @x, y: @y }
+#   end
+# end
 
 # case Point.new(1, -2)
 # in px, Integer
@@ -627,4 +627,37 @@ end
 #   puts 'not matched'
 # end
 
+# [0] => [*, 0, *]
 
+# Warning[:experimental] = false
+# eval('[0] => [*, 0, *]')
+
+# case [0, 1]
+# in [a, 2]
+#   puts '1. not matched'
+# in b
+#   puts '2. matched'
+# in c
+#   puts '3. not matched'
+# end
+# p a
+# p b
+# p c
+
+# require 'pry-byebug'
+# # binding.pry
+
+# $i = 0
+# ary = [0]
+# def ary.deconstruct
+#   puts 'ary.deconstruct'
+#   $i += 1
+#   self
+# end
+# case ary
+# in [0, 1]
+#   puts 'not matched'
+# in [0]
+#   puts 'matched'
+# end
+# puts $i #=> undefined
