@@ -88,10 +88,39 @@
 
 # simple_method
 
-def maybe_block
-  puts 'block party' if block_given?
-  puts 'executed regardless'
-end
+# def maybe_block
+#   puts 'block party' if block_given?
+#   puts 'executed regardless'
+# end
 
-# maybe_block
-maybe_block {}
+# # maybe_block
+# maybe_block {}
+
+# my_lambda = lambda { puts 'my lambda' }
+# my_other_lambda = -> { puts 'hello from the other side' }
+
+# my_lambda = -> { puts 'high five' }
+# my_lambda.call
+
+# my_name = ->(name) { puts "hello #{name}" }
+# # my_age = lambda { |age| puts "I am #{age} years old" }
+# my_age = ->(age) { puts "I am #{age} years old" }
+
+# my_name.call('tim')
+# my_age.call(78)
+
+# my_name = ->(name) { puts "hello #{name}" }
+# my_name.call('tim')
+# my_name.('tim')
+# my_name['tim']
+# my_name.=== 'tim'
+
+# a_proc = Proc.new { puts 'this is a proc' }
+# a_proc.call
+
+# a_proc = proc { puts 'this is a proc' }
+# a_proc.call
+
+a_proc = proc { |name, age| puts "name: #{name} --- age: #{age}" }
+a_proc.call('tim', 80)
+
