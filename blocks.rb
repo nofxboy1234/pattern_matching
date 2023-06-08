@@ -12,8 +12,19 @@
 # end
 # double_vision { puts 'How many fingers am I holding up?' }
 
-def love_language
-  yield('Ruby')
-  yield('Rails')
+# def love_language
+#   yield('Ruby')
+#   yield('Rails')
+# end
+# love_language { |lang| puts "I love #{lang}" }
+
+@transactions = [10, -15, 25, 30, -24, -70, 999]
+def transaction_statement
+  @transactions.each do |transaction|
+    yield transaction
+  end
 end
-love_language { |lang| puts "I love #{lang}" }
+
+transaction_statement do |transaction|
+  p "%0.2f" % transaction
+end
