@@ -73,7 +73,11 @@
 def awesome_method(&block)
   hash = { a: 'apple', b: 'banana', c: 'cookie' }
 
+  # hash.each do |key, value|
+  #   yield key, value
+  # end
   hash.each(&block)
 end
 
 awesome_method { |key, value| puts "#{key}: #{value}" }
+p awesome_method
