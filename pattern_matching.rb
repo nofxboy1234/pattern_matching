@@ -511,9 +511,25 @@
 #   puts 'not matched'
 # end
 
-case { a: 1, b: 2 }
-in {a: _, b: _foo} | Array
-  puts "matched: #{_}, #{_foo}"
+# case { a: 1, b: 2 }
+# in {a: _, b: _foo} | Array
+#   puts "matched: #{_}, #{_foo}"
+# else
+#   puts 'not matched'
+# end
+
+expectation = 18
+case [1, 2]
+  in expectation, *rest
+  puts "matched. expectation was: #{expectation}"
 else
-  puts 'not matched'
+  puts "not matched. expectation was: #{expectation}"
+end
+
+expectation = 18
+case [1, 2]
+  in ^expectation, *rest
+  puts "matched. expectation was: #{expectation}"
+else
+  puts "not matched. expectation was: #{expectation}"
 end
