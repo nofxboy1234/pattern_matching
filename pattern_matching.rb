@@ -483,23 +483,37 @@
 #   puts 'not matched'
 # end
 
-case { name: 'John', friends: [{ name: 'Jane' }, { name: 'Rajesh' }] }
-in name:, friends: [{name: first_friend}, *]
-  puts "matched #{first_friend}"
-else
-  puts 'not matched'
-end
+# case { name: 'John', friends: [{ name: 'Jane' }, { name: 'Rajesh' }] }
+# in name:, friends: [{name: first_friend}, *]
+#   puts "matched #{first_friend}"
+# else
+#   puts 'not matched'
+# end
 
-case [1, 2, 3]
-in a, *rest
-  puts "matched: #{a}, #{rest}"
-else
-  puts 'not matched'
-end
+# case [1, 2, 3]
+# in a, *rest
+#   puts "matched: #{a}, #{rest}"
+# else
+#   puts 'not matched'
+# end
 
-case {a: 1, b: 2, c: 3}
-in a:, **rest
-  puts "matched: #{a}, #{rest}"
+# case {a: 1, b: 2, c: 3}
+# in a:, **rest
+#   puts "matched: #{a}, #{rest}"
+# else
+#   puts 'not matched'
+# end
+
+# case { a: 1, b: 2 }
+# in {a: } | Array
+#   puts "matched: #{a}"
+# else
+#   puts 'not matched'
+# end
+
+case { a: 1, b: 2 }
+in {a: _, b: _foo} | Array
+  puts "matched: #{_}, #{_foo}"
 else
   puts 'not matched'
 end
