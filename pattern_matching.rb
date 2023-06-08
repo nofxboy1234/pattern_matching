@@ -568,15 +568,39 @@ class Point
   end
 end
 
+# case Point.new(1, -2)
+# in px, Integer
+#   puts "matched: #{px}"
+# else
+#   puts 'not matched'
+# end
+
+# case Point.new(1, -2)
+# in x: 0.. => px
+#   puts "matched: #{px}"
+# else
+#   puts 'not matched'
+# end
+
+# case Point.new(1, -2)
+# in x: 0.. => px, **rest
+#   puts "matched: #{px}"
+# else
+#   puts 'not matched'
+# end
+
+class SuperPoint < Point
+end
+
 case Point.new(1, -2)
-in px, Integer
+in SuperPoint(x: 0.. => px)
   puts "matched: #{px}"
 else
   puts 'not matched'
 end
 
-case Point.new(1, -2)
-in x: 0.. => px
+case SuperPoint.new(1, -2)
+in SuperPoint[x: 0.. => px]
   puts "matched: #{px}"
 else
   puts 'not matched'
