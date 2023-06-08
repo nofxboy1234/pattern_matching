@@ -589,19 +589,42 @@ end
 #   puts 'not matched'
 # end
 
-class SuperPoint < Point
-end
+# class SuperPoint < Point
+# end
 
-case Point.new(1, -2)
-in SuperPoint(x: 0.. => px)
-  puts "matched: #{px}"
-else
-  puts 'not matched'
-end
+# case Point.new(1, -2)
+# in SuperPoint(x: 0.. => px)
+#   puts "matched: #{px}"
+# else
+#   puts 'not matched'
+# end
 
-case SuperPoint.new(1, -2)
-in SuperPoint[x: 0.. => px]
-  puts "matched: #{px}"
-else
-  puts 'not matched'
-end
+# case SuperPoint.new(1, -2)
+# in SuperPoint[x: 0.. => px]
+#   puts "matched: #{px}"
+# else
+#   puts 'not matched'
+# end
+
+# case [1, 2]
+#   in a, b if b == a * 2
+#   puts "matched. a: #{a}, b: #{b}"
+# else
+#   puts 'not matched'
+# end
+
+# case [1, 1]
+#   in a, b if b == a * 2
+#   puts "matched. a: #{a}, b: #{b}"
+# else
+#   puts 'not matched'
+# end
+
+# case [1, 1]
+#   in a, b unless b == a * 2
+#   puts "matched. a: #{a}, b: #{b}"
+# else
+#   puts 'not matched'
+# end
+
+
