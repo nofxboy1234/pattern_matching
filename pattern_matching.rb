@@ -534,19 +534,50 @@
 #   puts "not matched. expectation was: #{expectation}"
 # end
 
-jane = { school: 'high', schools: [{ id: 1, level: 'middle' }, { id: 2, level: 'high' }] }
-john = { school: 'high', schools: [{ id: 1, level: 'middle' }] }
+# jane = { school: 'high', schools: [{ id: 1, level: 'middle' }, { id: 2, level: 'high' }] }
+# john = { school: 'high', schools: [{ id: 1, level: 'middle' }] }
 
-case jane
-in school:, schools: [*, {id:, level: ^school}] # select the last school, level should match
-  puts "matched. school: #{id}"
+# case jane
+# in school:, schools: [*, {id:, level: ^school}] # select the last school, level should match
+#   puts "matched. school: #{id}"
+# else
+#   puts 'not matched'
+# end
+
+# case john
+# in school:, schools: [*, {id:, level: ^school}] # select the last school, level should match
+#   puts "matched. school: #{id}"
+# else
+#   puts 'not matched'
+# end
+
+class Point
+  def initialize(x, y)
+    @x = x
+    @y = y
+  end
+
+  def deconstruct
+    puts 'deconstruct called'
+    [@x, @y]
+  end
+
+  def deconstruct_keys(keys)
+    puts "deconstruct_keys called with #{keys.inspect}"
+    { x: @x, y: @y }
+  end
+end
+
+case Point.new(1, -2)
+in px, Integer
+  puts "matched: #{px}"
 else
   puts 'not matched'
 end
 
-case john
-in school:, schools: [*, {id:, level: ^school}] # select the last school, level should match
-  puts "matched. school: #{id}"
+case Point.new(1, -2)
+in x: 0.. => px
+  puts "matched: #{px}"
 else
   puts 'not matched'
 end
