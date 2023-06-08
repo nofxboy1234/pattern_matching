@@ -40,16 +40,33 @@
 #   "%0.2f" % transaction
 # end
 
-@transactions = [10, -15, 25, 30, -24, -70, 999]
-def transaction_statement
-  formatted_transactions = []
-  @transactions.each do |transaction|
-    formatted_transactions << yield(transaction)
-  end
+# @transactions = [10, -15, 25, 30, -24, -70, 999]
+# def transaction_statement
+#   formatted_transactions = []
+#   @transactions.each do |transaction|
+#     formatted_transactions << yield(transaction)
+#   end
 
-  p formatted_transactions
+#   p formatted_transactions
+# end
+
+# transaction_statement do |transaction|
+#   "%0.2f" % transaction
+# end
+
+# def say_something
+#   yield
+# end
+
+# say_something do |word|
+#   puts "And then I said: #{word}"
+# end
+
+def mad_libs
+  yield('cool', 'beans', 'burrito')
 end
 
-transaction_statement do |transaction|
-  "%0.2f" % transaction
+mad_libs do |adjective, noun|
+  puts "I said #{adjective} #{noun}"
 end
+
