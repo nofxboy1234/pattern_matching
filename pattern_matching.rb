@@ -518,18 +518,35 @@
 #   puts 'not matched'
 # end
 
-expectation = 18
-case [1, 2]
-  in expectation, *rest
-  puts "matched. expectation was: #{expectation}"
+# expectation = 18
+# case [1, 2]
+#   in expectation, *rest
+#   puts "matched. expectation was: #{expectation}"
+# else
+#   puts "not matched. expectation was: #{expectation}"
+# end
+
+# expectation = 18
+# case [1, 2]
+#   in ^expectation, *rest
+#   puts "matched. expectation was: #{expectation}"
+# else
+#   puts "not matched. expectation was: #{expectation}"
+# end
+
+jane = { school: 'high', schools: [{ id: 1, level: 'middle' }, { id: 2, level: 'high' }] }
+john = { school: 'high', schools: [{ id: 1, level: 'middle' }] }
+
+case jane
+in school:, schools: [*, {id:, level: ^school}] # select the last school, level should match
+  puts "matched. school: #{id}"
 else
-  puts "not matched. expectation was: #{expectation}"
+  puts 'not matched'
 end
 
-expectation = 18
-case [1, 2]
-  in ^expectation, *rest
-  puts "matched. expectation was: #{expectation}"
+case john
+in school:, schools: [*, {id:, level: ^school}] # select the last school, level should match
+  puts "matched. school: #{id}"
 else
-  puts "not matched. expectation was: #{expectation}"
+  puts 'not matched'
 end
