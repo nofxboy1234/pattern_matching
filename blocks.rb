@@ -62,11 +62,18 @@
 #   puts "And then I said: #{word}"
 # end
 
-def mad_libs
-  yield('cool', 'beans', 'burrito')
+# def mad_libs
+#   yield('cool', 'beans', 'burrito')
+# end
+
+# mad_libs do |adjective, noun|
+#   puts "I said #{adjective} #{noun}"
+# end
+
+def awesome_method(&block)
+  hash = { a: 'apple', b: 'banana', c: 'cookie' }
+
+  hash.each(&block)
 end
 
-mad_libs do |adjective, noun|
-  puts "I said #{adjective} #{noun}"
-end
-
+awesome_method { |key, value| puts "#{key}: #{value}" }
