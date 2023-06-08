@@ -70,14 +70,28 @@
 #   puts "I said #{adjective} #{noun}"
 # end
 
-def awesome_method(&block)
-  hash = { a: 'apple', b: 'banana', c: 'cookie' }
+# def awesome_method(&block)
+#   hash = { a: 'apple', b: 'banana', c: 'cookie' }
 
-  # hash.each do |key, value|
-  #   yield key, value
-  # end
-  hash.each(&block)
+#   # hash.each do |key, value|
+#   #   yield key, value
+#   # end
+#   hash.each(&block)
+# end
+
+# awesome_method { |key, value| puts "#{key}: #{value}" }
+# p awesome_method
+
+# def simple_method
+#   yield
+# end
+
+# simple_method
+
+def maybe_block
+  puts 'block party' if block_given?
+  puts 'executed regardless'
 end
 
-awesome_method { |key, value| puts "#{key}: #{value}" }
-p awesome_method
+# maybe_block
+maybe_block {}
