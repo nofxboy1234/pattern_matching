@@ -203,6 +203,7 @@ def cool_method
   yield
 end
 my_proc = proc { puts "proc party" }
+my_proc.call
 cool_method(&my_proc)
 
 my_lambda = -> { puts "lambda party" }
@@ -214,3 +215,9 @@ cool_method(&my_lambda)
 # a_proc = proc { puts 'procodile hunter' }
 # cool_method(&a_proc)
 
+def return_binding
+  foo = 100
+  binding
+end
+puts return_binding.class
+puts return_binding.eval('foo')
