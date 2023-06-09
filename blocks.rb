@@ -198,16 +198,19 @@
 # p ('1'..'10').map(&:to_i)
 # p(('1'..'10').map { |x| x.send(:to_i) })
 
-# def cool_method
-#   # binding.pry
-#   yield
-# end
-# my_proc = proc { puts "proc party" }
-# cool_method(&my_proc)
-
-def cool_method(an_arg)
-  an_arg.call
+def cool_method
+  # binding.pry
+  yield
 end
-a_proc = proc { puts 'procodile hunter' }
-cool_method(&a_proc)
+my_proc = proc { puts "proc party" }
+cool_method(&my_proc)
+
+my_lambda = -> { puts "lambda party" }
+cool_method(&my_lambda)
+
+# def cool_method(an_arg)
+#   an_arg.call
+# end
+# a_proc = proc { puts 'procodile hunter' }
+# cool_method(&a_proc)
 
