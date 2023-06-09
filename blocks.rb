@@ -160,8 +160,10 @@
 # my_lambda = ->(name = 'r2d2') { puts name }
 # my_lambda.call
 
+# require 'pry-byebug'
 # def my_method(useful_arg)
 #   # puts block_given?
+#   binding.pry
 #   useful_arg.call
 # end
 
@@ -178,12 +180,14 @@
 # logger my_lambda
 # logger(my_lambda)
 
-def cool_method(&my_block)
-  # puts block_given?
-  my_block.call
-  # yield # can be used but makes unclear
-end
-cool_method { puts 'cool' }
+# require 'pry-byebug'
+# def cool_method(&my_block)
+#   # puts block_given?
+#   # binding.pry
+#   my_block.call
+#   # yield # can be used but makes unclear
+# end
+# cool_method { puts 'cool' }
 
 # arr = %w[1 2 3]
 # p arr.map { |element| element.to_i }
@@ -194,11 +198,12 @@ cool_method { puts 'cool' }
 # p ('1'..'10').map(&:to_i)
 # p(('1'..'10').map { |x| x.send(:to_i) })
 
-def cool_method
-  yield
-end
-my_proc = proc { puts "proc party" }
-cool_method(&my_proc)
+# def cool_method
+#   # binding.pry
+#   yield
+# end
+# my_proc = proc { puts "proc party" }
+# cool_method(&my_proc)
 
 # def cool_method(an_arg)
 #   an_arg.call
