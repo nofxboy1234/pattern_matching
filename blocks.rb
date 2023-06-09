@@ -131,10 +131,25 @@
 # p nested_array.select { |a, b| a + b > 10 }
 
 # a_lambda = lambda { |a, b| puts "a: #{a} --- b: #{b}" }
-a_lambda = ->(a, b) { puts "a: #{a} --- b: #{b}" }
+# a_lambda = ->(a, b) { puts "a: #{a} --- b: #{b}" }
 # a_lambda.call('apple')
 # a_lambda.call('apple', 'banana', 'cake')
 # a_lambda.call([1, 2])
 
-a_proc = proc { |a, b| puts "a: #{a} --- b: #{b}" }
-a_proc.call([1, 2])
+# a_proc = proc { |a, b| puts "a: #{a} --- b: #{b}" }
+# a_proc.call([1, 2])
+
+# a_lambda = -> { return 1 }
+# p a_lambda.call
+
+# a_proc = proc { return 1 }
+# p a_proc.call # localJumpError (unexpected return) in irb
+
+def my_method
+  a_proc = Proc.new { return }
+  puts 'this line will be printed'
+  a_proc.call
+  puts 'this line is never printed'
+end
+
+my_method
