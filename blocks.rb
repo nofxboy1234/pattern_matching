@@ -185,6 +185,12 @@
 # end
 # cool_method { puts 'cool' }
 
-arr = ['1', '2', '3']
+arr = %w[1 2 3]
+p arr.map { |element| element.to_i }
 p arr.map(&:to_i)
+
+p (1..10).map(&:to_s)
+p (1..10).map { |x| x.send(:to_s) }
+p ('1'..'10').map(&:to_i)
+p ('1'..'10').map { |x| x.send(:to_i) }
 
