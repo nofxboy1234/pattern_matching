@@ -190,7 +190,6 @@ p arr.map { |element| element.to_i }
 p arr.map(&:to_i)
 
 p (1..10).map(&:to_s)
-p (1..10).map { |x| x.send(:to_s) }
+p(1..10).map { |x| x.send(:to_s) }
 p ('1'..'10').map(&:to_i)
-p ('1'..'10').map { |x| x.send(:to_i) }
-
+p('1'..'10').map { |x| x.send(:to_i) }
