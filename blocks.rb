@@ -205,9 +205,9 @@
 # my_proc = proc { puts "proc party" }
 # cool_method(&my_proc)
 
-# def cool_method(an_arg)
-#   an_arg.call
-# end
-# a_proc = proc { puts 'procodile hunter' }
-# cool_method(&a_proc)
+def cool_method(an_arg)
+  an_arg.call
+end
+a_proc = proc { puts 'procodile hunter' }
+cool_method(&a_proc)
 
