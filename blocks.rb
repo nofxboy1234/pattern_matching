@@ -145,11 +145,46 @@
 # a_proc = proc { return 1 }
 # p a_proc.call # localJumpError (unexpected return) in irb
 
-def my_method
-  a_proc = Proc.new { return }
-  puts 'this line will be printed'
-  a_proc.call
-  puts 'this line is never printed'
-end
+# def my_method
+#   a_proc = Proc.new { return }
+#   puts 'this line will be printed'
+#   a_proc.call
+#   puts 'this line is never printed'
+# end
 
-my_method
+# my_method
+
+# my_proc = proc { |name = 'bob'| puts name }
+# my_proc.call
+
+# my_lambda = ->(name = 'r2d2') { puts name }
+# my_lambda.call
+
+# def my_method(useful_arg)
+#   # puts block_given?
+#   useful_arg.call
+# end
+
+# my_lambda = -> { puts 'lambda' }
+# my_proc = proc { puts 'proc' }
+
+# my_method(my_lambda)
+# my_method(my_proc)
+
+# def logger
+#   yield
+# end
+# logger { puts 'hello from the block' }
+# logger my_lambda
+# logger(my_lambda)
+
+# def cool_method(&my_block)
+#   # puts block_given?
+#   my_block.call
+#   # yield # can be used but makes unclear
+# end
+# cool_method { puts 'cool' }
+
+arr = ['1', '2', '3']
+p arr.map(&:to_i)
+
