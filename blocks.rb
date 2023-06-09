@@ -121,6 +121,20 @@
 # a_proc = proc { puts 'this is a proc' }
 # a_proc.call
 
-a_proc = proc { |name, age| puts "name: #{name} --- age: #{age}" }
-a_proc.call('tim', 80)
+# a_proc = proc { |name, age| puts "name: #{name} --- age: #{age}" }
+# a_proc.call('tim', 80)
 
+# a_proc = proc { |a, b| puts "a: #{a} --- b: #{b}" }
+# a_proc.call('apple')
+
+# nested_array = [[1, 2], [3, 4], [5, 6]]
+# p nested_array.select { |a, b| a + b > 10 }
+
+# a_lambda = lambda { |a, b| puts "a: #{a} --- b: #{b}" }
+a_lambda = ->(a, b) { puts "a: #{a} --- b: #{b}" }
+# a_lambda.call('apple')
+# a_lambda.call('apple', 'banana', 'cake')
+# a_lambda.call([1, 2])
+
+a_proc = proc { |a, b| puts "a: #{a} --- b: #{b}" }
+a_proc.call([1, 2])
