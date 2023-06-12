@@ -283,6 +283,7 @@ hash = {a: 12, b: 13}
 foo6(**hash) # err
 
 
+
 # require 'faker'
 # class FakePerson
 #   attr_reader :first_namee, :last_name
