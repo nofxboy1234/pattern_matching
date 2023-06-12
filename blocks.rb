@@ -321,28 +321,36 @@
 # end
 # something_else
 
-require 'pry-byebug'
-require 'faker'
-class FakePerson
-  attr_reader :first_name, :last_name
+# require 'pry-byebug'
+# require 'faker'
+# class FakePerson
+#   attr_reader :first_name, :last_name
 
-  def initialize(name)
-    # binding.pry
-    @first_name = name[:first_name]
-    @last_name = name[:last_name]
-  end
-end
-# fp1 = FakePerson.new({ first_name: 'John', last_name: 'Doe' })
-# p fp1.first_name
-# p fp1.last_name
-# first_name = Faker::Name.first_name
-# last_name = Faker::Name.last_name
-# fp2 = FakePerson.new({ first_name:, last_name: })
-# p fp2.first_name
-# p fp2.last_name
-fuzzer = ->(k) { Faker::Name.send(k) }
-# p fuzzer.call(:first_name)
-# p fuzzer.call(:last_name)
-fp3 = FakePerson.new(fuzzer)
-p fp3.first_name
-p fp3.last_name
+#   def initialize(name)
+#     # binding.pry
+#     @first_name = name[:first_name]
+#     @last_name = name[:last_name]
+#   end
+# end
+# # fp1 = FakePerson.new({ first_name: 'John', last_name: 'Doe' })
+# # p fp1.first_name
+# # p fp1.last_name
+# # first_name = Faker::Name.first_name
+# # last_name = Faker::Name.last_name
+# # fp2 = FakePerson.new({ first_name:, last_name: })
+# # p fp2.first_name
+# # p fp2.last_name
+# fuzzer = ->(k) { Faker::Name.send(k) }
+# # p fuzzer.call(:first_name)
+# # p fuzzer.call(:last_name)
+# fp3 = FakePerson.new(fuzzer)
+# p fp3.first_name
+# p fp3.last_name
+
+# add = ->(a, b) { puts "a: #{a}, b: #{b}"; a + b }
+# p add.call(100, 200)
+# increment = add.curry.call(1)
+# p increment.call(100)
+
+l = ->(a, b) { a + b }
+p l.call(1, 2)
