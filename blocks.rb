@@ -648,3 +648,9 @@
 # %w[test me please].each { puts _1.upcase } # prints TEST, ME, PLEASE
 # p (1..5).map { _1**2 } # => [1, 4, 9, 16, 25]
 
+# b = proc { |x, y, z| (x || 0) + (y || 0) + (z || 0) }
+# p b.curry[1][2][3]           #=> 6
+# p b.curry[1, 2][3, 4]        #=> 6
+# p b.curry[1, 3][3, 4]        #=> 7
+# p b.curry(5)[1][2][3][4][5]  #=> 6
+# p b.curry(5)[1, 2][3, 4][5]  #=> 6
