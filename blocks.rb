@@ -557,3 +557,4 @@
 # l = ->(x, _y) { p x }
 # [[1, 2], [3, 4]].map(&p) #=> [1, 3]
 # [[1, 2], [3, 4]].map(&l) # ArgumentError: wrong number of arguments (given 1, expected 2)
+
