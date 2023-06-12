@@ -603,21 +603,22 @@ def m1(&b) = b.call
 def m2
   m1 { return }
 end
-m2 # ok
+p m2 # ok
 
-# def m1(&b) = b.call
+def m1(&b) = b.call
 
-# def m2
-#   m1 { break }
-# end
-# m2 # ok
+def m2
+  m1 { break }
+end
+p m2 # ok
 
-# def m1(&) = b
+def m1(&) = b
 
-# def m2
-#   m1 { return }.call
-# end
-# m2 # ok
+def m2
+  m1 { return }.call
+end
+p m2 # ok
+
 # def m1(&) = b
 
 # def m2
