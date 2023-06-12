@@ -222,77 +222,94 @@
 # puts return_binding.class
 # puts return_binding.eval('foo')
 
-def foo(regular, hash = {})
-  puts "regular: #{regular}"
-  puts "hash: #{hash}"
-  puts "a: #{hash[:a]}"
-  puts "b: #{hash[:b]}"
-end
-foo('regular argument', a: 12, b: 13)
-foo('regular argument', { a: 12, b: 13 })
+# def foo(regular, hash = {})
+#   puts "regular: #{regular}"
+#   puts "hash: #{hash}"
+#   puts "a: #{hash[:a]}"
+#   puts "b: #{hash[:b]}"
+# end
+# foo('regular argument', a: 12, b: 13)
+# foo('regular argument', { a: 12, b: 13 })
 
-def foo2(regular, a:, b:)
-  puts "regular: #{regular}"
-  puts "a: #{a}"
-  puts "b: #{b}"
-end
-foo2('regular argument', a: 12, b: 13)
-# foo2('regular argument', { a: 12, b: 13 })
-# foo2('regular argument', { a: 12, b: 13 }, 3)
+# def foo2(regular, a:, b:)
+#   puts "regular: #{regular}"
+#   puts "a: #{a}"
+#   puts "b: #{b}"
+# end
+# foo2('regular argument', a: 12, b: 13)
+# # foo2('regular argument', { a: 12, b: 13 })
+# # foo2('regular argument', { a: 12, b: 13 }, 3)
 
-def foo3(ordered_argument, **named_arguments)
-  puts "ordered argument: #{ordered_argument}"
-  puts "named arguments: #{named_arguments}"
-  puts "genre: #{named_arguments[:genre]}"
-end
-foo3(:titles, genre: 'jazz', duration_less_than: 270)
+# def foo3(ordered_argument, **named_arguments)
+#   puts "ordered argument: #{ordered_argument}"
+#   puts "named arguments: #{named_arguments}"
+#   puts "genre: #{named_arguments[:genre]}"
+# end
+# foo3(:titles, genre: 'jazz', duration_less_than: 270)
 
-def foo(a, *b, **c)
-  p [a, b, c]
-end
-foo(10)
-foo(10, 20, 30)
-foo(10, 20, 30, d: 40, e: 50)
-foo(10, d: 40, e: 50)
-foo([10, 20, 30])
-foo(10, 20, 30)
-opts = { d: 40, e: 50 }
-foo(10, opts, f: 60)
-foo(10, **opts, f: 60)
+# def foo(a, *b, **c)
+#   p [a, b, c]
+# end
+# foo(10)
+# foo(10, 20, 30)
+# foo(10, 20, 30, d: 40, e: 50)
+# foo(10, d: 40, e: 50)
+# foo([10, 20, 30])
+# foo(10, 20, 30)
+# opts = { d: 40, e: 50 }
+# foo(10, opts, f: 60)
+# foo(10, **opts, f: 60)
 
-def foo4(regular, a:, b:)
-  puts "regular: #{regular}"
-  puts "a: #{a}"
-  puts "b: #{b}"
-end
-foo4('regular argument', a: 12, b: 13)
-foo4('regular argument', **{ a: 12, b: 13 })
-hash = { a: 12, b: 13 }
-foo4('regular argument', **hash)
+# def foo4(regular, a:, b:)
+#   puts "regular: #{regular}"
+#   puts "a: #{a}"
+#   puts "b: #{b}"
+# end
+# foo4('regular argument', a: 12, b: 13)
+# foo4('regular argument', **{ a: 12, b: 13 })
+# hash = { a: 12, b: 13 }
+# foo4('regular argument', **hash)
 
-def foo5(a, b)
-  puts "a: #{a}"
-  puts "b: #{b}"
-end
-hash = { a: 12, b: 13 }
-# foo5(**hash) # err
-def foo6(a)
-  puts "a: #{a}"
-end
-hash = { a: 12, b: 13 }
-foo6(**hash) # err
+# def foo5(a, b)
+#   puts "a: #{a}"
+#   puts "b: #{b}"
+# end
+# hash = { a: 12, b: 13 }
+# # foo5(**hash) # err
+# def foo6(a)
+#   puts "a: #{a}"
+# end
+# hash = { a: 12, b: 13 }
+# foo6(**hash) # err
 
-def logger
-  zz = 500
-  yield
+# def logger
+#   zz = 500
+#   yield
+# end
+# zz = 1
+# xx = 3
+# logger do
+#   puts 'hello'
+#   puts "zz: #{zz}"
+#   puts "xx: #{xx}"
+# end
+
+# a = ->(x) { puts x }
+# a.call # err
+# a = ->(x = 'hello word') { puts x }
+# a.call
+def something
+  o = proc { return }
+  o.call
+  puts 'after'
 end
-zz = 1
-xx = 3
-logger do
-  puts 'hello'
-  puts "zz: #{zz}"
-  puts "xx: #{xx}"
+something
+def something_else
+  o = -> { return }
+  o.call
+  puts 'after'
 end
+something_else
 
 # require 'faker'
 # class FakePerson
