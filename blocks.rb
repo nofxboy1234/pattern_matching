@@ -240,6 +240,12 @@ foo2('regular argument', a: 12, b: 13)
 # foo2('regular argument', { a: 12, b: 13 })
 # foo2('regular argument', { a: 12, b: 13 }, 3)
 
+def foo3(ordered_argument, **named_arguments)
+  puts "ordered argument: #{ordered_argument}"
+  puts "named arguments: #{named_arguments}"
+  puts "genre: #{named_arguments[:genre]}"
+end
+foo3(:titles, genre: 'jazz', duration_less_than: 270)
 # require 'faker'
 # class FakePerson
 #   attr_reader :first_namee, :last_name
