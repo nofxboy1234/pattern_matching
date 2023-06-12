@@ -597,3 +597,43 @@
 # a = {test: 1}.to_proc.call(:test)       #=> 1
 # p a
 # p %i[test many keys].map(&{test: 1})  #=> [1, nil, nil]
+
+def m1(&b) = b.call
+
+def m2
+  m1 { return }
+end
+m2 # ok
+
+# def m1(&b) = b.call
+
+# def m2
+#   m1 { break }
+# end
+# m2 # ok
+
+# def m1(&) = b
+
+# def m2
+#   m1 { return }.call
+# end
+# m2 # ok
+# def m1(&) = b
+
+# def m2
+#   m1 { break }.call
+# end
+# m2 # LocalJumpError
+
+# def m1(&) = b
+
+# def m2
+#   m1 { return }
+# end
+# m2.call # LocalJumpError
+# def m1(&) = b
+
+# def m2
+#   m1 { break }
+# end
+# m2.call # LocalJumpError
