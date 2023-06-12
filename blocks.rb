@@ -321,31 +321,28 @@
 # end
 # something_else
 
-
-
+require 'pry-byebug'
 require 'faker'
 class FakePerson
   attr_reader :first_name, :last_name
 
-  # def initialize(first_name:, last_name:)
-  #   @first_name = first_name
-  #   @last_name = last_name
-  # end
-
-  def initialize(**name)
-    @first_name = [:first_name]
-    @last_name = [:last_name]
+  def initialize(name)
+    # binding.pry
+    @first_name = name[:first_name]
+    @last_name = name[:last_name]
   end
 end
-# fp1 = FakePerson.new(first_name: 'John', last_name: 'Doe')
+# fp1 = FakePerson.new({ first_name: 'John', last_name: 'Doe' })
 # p fp1.first_name
 # p fp1.last_name
 # first_name = Faker::Name.first_name
 # last_name = Faker::Name.last_name
-# fp2 = FakePerson.new(first_name: first_name, last_name: last_name)
+# fp2 = FakePerson.new({ first_name:, last_name: })
 # p fp2.first_name
 # p fp2.last_name
-
 fuzzer = ->(k) { Faker::Name.send(k) }
 # p fuzzer.call(:first_name)
-fp2 = FakePerson.new(fuzzer)
+# p fuzzer.call(:last_name)
+fp3 = FakePerson.new(fuzzer)
+p fp3.first_name
+p fp3.last_name
