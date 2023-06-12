@@ -246,6 +246,13 @@ def foo3(ordered_argument, **named_arguments)
   puts "genre: #{named_arguments[:genre]}"
 end
 foo3(:titles, genre: 'jazz', duration_less_than: 270)
+
+def foo4(a, b)
+  puts "a: #{a}"
+  puts "b: #{b}"
+end
+foo4(1, 2)
+
 # require 'faker'
 # class FakePerson
 #   attr_reader :first_namee, :last_name
