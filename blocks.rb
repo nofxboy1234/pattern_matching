@@ -588,4 +588,12 @@
 # p %w[Bob Jane].map(&hi)    #=> ["Hi, Bob!", "Hi, Jane!"]
 # p %w[Bob Jane].map(&hey)   #=> ["Hey, Bob!", "Hey, Jane!"]
 
-:to_s.to_proc.call(1)
+# p :to_s.to_proc.call(1)           #=> "1"
+# p [1, 2].map(&:to_s)              #=> ["1", "2"]
+
+# method(:puts).to_proc.call(1)   # prints 1
+# [1, 2].each(&method(:puts))     # prints 1, 2
+
+# a = {test: 1}.to_proc.call(:test)       #=> 1
+# p a
+# p %i[test many keys].map(&{test: 1})  #=> [1, nil, nil]
