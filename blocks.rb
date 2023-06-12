@@ -352,5 +352,28 @@
 # increment = add.curry.call(1)
 # p increment.call(100)
 
-l = ->(a, b) { a + b }
-p l.call(1, 2)
+# l = ->(a, b) { a + b }
+# p l.call(1, 2)
+
+# square = proc { |x| x**2 }
+# p square.call(3)
+# p square.(3)
+# p square[3]
+# p square.===(3)
+
+# class Array
+#   def hello
+#     puts 'hello'
+#   end
+# end
+# a = [1, 2]
+# a.hello
+
+def gen_times(factor)
+  Proc.new { |n| n * factor } # remembers the value of factor at the moment of creation
+end
+times3 = gen_times(3)
+times5 = gen_times(5)
+p times3.call(12)
+p times5.call(5)
+p times3.call(times5.call(4))
