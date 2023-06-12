@@ -198,16 +198,16 @@
 # p ('1'..'10').map(&:to_i)
 # p(('1'..'10').map { |x| x.send(:to_i) })
 
-def cool_method
-  # binding.pry
-  yield
-end
-my_proc = proc { puts "proc party" }
-my_proc.call
-cool_method(&my_proc)
+# def cool_method
+#   # binding.pry
+#   yield
+# end
+# my_proc = proc { puts "proc party" }
+# my_proc.call
+# cool_method(&my_proc)
 
-my_lambda = -> { puts "lambda party" }
-cool_method(&my_lambda)
+# my_lambda = -> { puts "lambda party" }
+# cool_method(&my_lambda)
 
 # def cool_method(an_arg)
 #   an_arg.call
@@ -215,9 +215,49 @@ cool_method(&my_lambda)
 # a_proc = proc { puts 'procodile hunter' }
 # cool_method(&a_proc)
 
-def return_binding
-  foo = 100
-  binding
+# def return_binding
+#   foo = 100
+#   binding
+# end
+# puts return_binding.class
+# puts return_binding.eval('foo')
+
+def foo(regular, hash = {})
+  puts "regular: #{regular}"
+  puts "hash: #{hash}"
+  puts "a: #{hash[:a]}"
+  puts "b: #{hash[:b]}"
 end
-puts return_binding.class
-puts return_binding.eval('foo')
+foo('regular argument', a: 12, b: 13)
+foo('regular argument', { a: 12, b: 13 })
+
+def foo2(regular, a:, b:)
+  puts "regular: #{regular}"
+  puts "a: #{a}"
+  puts "b: #{b}"
+end
+foo2('regular argument', a: 12, b: 13)
+# foo2('regular argument', { a: 12, b: 13 })
+# foo2('regular argument', { a: 12, b: 13 }, 3)
+
+# require 'faker'
+# class FakePerson
+#   attr_reader :first_namee, :last_name
+
+#   def initialize(first_name:, last_name:); end
+
+#   def initialize(name)
+#     @first_namee = name[:first_namee]
+#     @last_name = name[:last_name]
+#   end
+# end
+# p1 = FakePerson.new(first_namee: 'John', last_name: 'Doe')
+# p p1.first_namee
+# p p1.last_name
+# fuzzer = lambda do |k|
+#   puts "k: #{k}"
+#   Faker::Name.send(k)
+# end
+# p2 = FakePerson.new(fuzzer)
+# p p2.first_namee
+# p p2.last_name
