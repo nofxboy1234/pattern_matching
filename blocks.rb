@@ -388,3 +388,142 @@
 
 # lambda1 = lambda { |x| x**2 }
 # lambda2 = ->(x) { x**2 }
+
+# +return+ in non-lambda proc, +b+, exits +m2+.
+# (The block +{ return }+ is given for +m1+ and embraced by +m2+.)
+# $a = []
+# def m1(&b)
+#   $a << :z
+#   b.call
+#   $a << :m1
+# end
+
+# def m2
+#   $a << :z2
+#   m1 { return }
+#   $a << :m2
+# end
+# m2
+# p $a
+# #=> []
+
+# +break+ in non-lambda proc, +b+, exits +m1+.
+# (The block +{ break }+ is given for +m1+ and embraced by +m2+.)
+# $a = []
+# def m1(&b)
+#   b.call
+#   $a << :m1
+# end
+
+# def m2
+#   m1 { break }
+#   $a << :m2
+# end
+# m2
+# p $a
+# #=> [:m2]
+
+# +next+ in non-lambda proc, +b+, exits the block.
+# (The block +{ next }+ is given for +m1+ and embraced by +m2+.)
+# $a = []
+# def m1(&b)
+#   b.call
+#   $a << :m1
+# end
+
+# def m2
+#   m1 { next }
+#   $a << :m2
+# end
+# m2
+# p $a
+# #=> [:m1, :m2]
+
+# Using +proc+ method changes the behavior as follows because
+# The block is given for +proc+ method and embraced by +m2+.
+# $a = []
+# def m1(&b)
+#   b.call
+#   $a << :m1
+# end
+
+# def m2
+#   m1(&proc { return })
+#   $a << :m2
+# end
+# m2
+# p $a
+# #=> []
+
+# $a = []
+# def m1(&b)
+#   b.call
+#   $a << :m1
+# end
+
+# def m2
+#   m1(&proc { break })
+#   $a << :m2
+# end
+# m2
+# p $a
+# # break from proc-closure (LocalJumpError)
+
+# $a = []
+# def m1(&b)
+#   b.call
+#   $a << :m1
+# end
+
+# def m2
+#   m1(&proc { next })
+#   $a << :m2
+# end
+# m2
+# p $a
+# #=> [:m1, :m2]
+
+# +return+, +break+ and +next+ in the stubby lambda exits the block.
+# (+lambda+ method behaves same.)
+# (The block is given for stubby lambda syntax and embraced by +m2+.)
+# $a = []
+# def m1(&b)
+#   b.call
+#   $a << :m1
+# end
+
+# def m2
+#   m1(&-> { return })
+#   $a << :m2
+# end
+# m2
+# p $a
+# #=> [:m1, :m2]
+
+# $a = []
+# def m1(&b)
+#   b.call
+#   $a << :m1
+# end
+
+# def m2
+#   m1(&-> { break })
+#   $a << :m2
+# end
+# m2
+# p $a
+# #=> [:m1, :m2]
+
+# $a = []
+# def m1(&b)
+#   b.call
+#   $a << :m1
+# end
+
+# def m2
+#   m1(&-> { next })
+#   $a << :m2
+# end
+# m2
+# p $a
+# #=> [:m1, :m2]
