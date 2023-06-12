@@ -251,7 +251,23 @@ def foo4(a, b)
   puts "a: #{a}"
   puts "b: #{b}"
 end
-foo4(1, 2)
+# foo4(1, 2)
+# foo4(*[3, 4])
+# arr = [4, 5]
+# foo4(*arr)
+
+def foo(a, *b, **c)
+  p [a, b, c]
+end
+foo(10)
+foo(10, 20, 30)
+foo(10, 20, 30, d: 40, e: 50)
+foo(10, d: 40, e: 50)
+foo([10, 20, 30])
+foo(*[10, 20, 30])
+opts = {d: 40, e: 50}
+foo(10, opts, f: 60)
+foo(10, **opts, f: 60)
 
 # require 'faker'
 # class FakePerson
