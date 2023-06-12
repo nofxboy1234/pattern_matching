@@ -564,3 +564,12 @@
 # # C.new.e(1, 2) #=> ArgumentError
 # p C.new.method(:e).to_proc.lambda?   #=> true
 
+# class C
+#   def self.def2(name, &body)
+#     define_method(name, &body)
+#   end
+
+#   def2(:f) {}
+# end
+# C.new.f(1,2)       #=> ArgumentError
+
