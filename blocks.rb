@@ -298,11 +298,11 @@
 # zz = 4
 # logger(&hello)
 
-marco = 'polo'
-game = -> { puts marco }
-game.call
-marco = 'rubio'
-game.call
+# marco = 'polo'
+# game = -> { puts marco }
+# game.call
+# marco = 'rubio'
+# game.call
 
 # a = ->(x) { puts x }
 # a.call # err
@@ -321,24 +321,31 @@ game.call
 # end
 # something_else
 
-# require 'faker'
-# class FakePerson
-#   attr_reader :first_namee, :last_name
 
-#   def initialize(first_name:, last_name:); end
 
-#   def initialize(name)
-#     @first_namee = name[:first_namee]
-#     @last_name = name[:last_name]
-#   end
-# end
-# p1 = FakePerson.new(first_namee: 'John', last_name: 'Doe')
-# p p1.first_namee
-# p p1.last_name
-# fuzzer = lambda do |k|
-#   puts "k: #{k}"
-#   Faker::Name.send(k)
-# end
-# p2 = FakePerson.new(fuzzer)
-# p p2.first_namee
-# p p2.last_name
+require 'faker'
+class FakePerson
+  attr_reader :first_name, :last_name
+
+  # def initialize(first_name:, last_name:)
+  #   @first_name = first_name
+  #   @last_name = last_name
+  # end
+
+  def initialize(**name)
+    @first_name = [:first_name]
+    @last_name = [:last_name]
+  end
+end
+# fp1 = FakePerson.new(first_name: 'John', last_name: 'Doe')
+# p fp1.first_name
+# p fp1.last_name
+# first_name = Faker::Name.first_name
+# last_name = Faker::Name.last_name
+# fp2 = FakePerson.new(first_name: first_name, last_name: last_name)
+# p fp2.first_name
+# p fp2.last_name
+
+fuzzer = ->(k) { Faker::Name.send(k) }
+# p fuzzer.call(:first_name)
+fp2 = FakePerson.new(fuzzer)
