@@ -247,15 +247,6 @@ def foo3(ordered_argument, **named_arguments)
 end
 foo3(:titles, genre: 'jazz', duration_less_than: 270)
 
-def foo4(a, b)
-  puts "a: #{a}"
-  puts "b: #{b}"
-end
-# foo4(1, 2)
-# foo4(*[3, 4])
-# arr = [4, 5]
-# foo4(*arr)
-
 def foo(a, *b, **c)
   p [a, b, c]
 end
@@ -268,6 +259,29 @@ foo(*[10, 20, 30])
 opts = {d: 40, e: 50}
 foo(10, opts, f: 60)
 foo(10, **opts, f: 60)
+
+def foo4(regular, a:, b:)
+  puts "regular: #{regular}"
+  puts "a: #{a}"
+  puts "b: #{b}"
+end
+foo4('regular argument', a: 12, b: 13)
+foo4('regular argument', **{a: 12, b: 13})
+hash = {a: 12, b: 13}
+foo4('regular argument', **hash)
+
+def foo5(a, b)
+  puts "a: #{a}"
+  puts "b: #{b}"
+end
+hash = {a: 12, b: 13}
+# foo5(**hash) # err
+def foo6(a)
+  puts "a: #{a}"
+end
+hash = {a: 12, b: 13}
+foo6(**hash) # err
+
 
 # require 'faker'
 # class FakePerson
