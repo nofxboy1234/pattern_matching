@@ -282,34 +282,38 @@
 # hash = { a: 12, b: 13 }
 # foo6(**hash) # err
 
-# def logger
-#   zz = 500
-#   yield
-# end
-# zz = 1
-# xx = 3
+def logger
+  zz = 500
+  yield
+end
+zz = 1
+xx = 3
 # logger do
 #   puts 'hello'
 #   puts "zz: #{zz}"
 #   puts "xx: #{xx}"
 # end
+hello = -> { puts "zz: #{zz}" }
+logger(&hello)
+zz = 4
+logger(&hello)
 
 # a = ->(x) { puts x }
 # a.call # err
 # a = ->(x = 'hello word') { puts x }
 # a.call
-def something
-  o = proc { return }
-  o.call
-  puts 'after'
-end
-something
-def something_else
-  o = -> { return }
-  o.call
-  puts 'after'
-end
-something_else
+# def something
+#   o = proc { return }
+#   o.call
+#   puts 'after'
+# end
+# something
+# def something_else
+#   o = -> { return }
+#   o.call
+#   puts 'after'
+# end
+# something_else
 
 # require 'faker'
 # class FakePerson
