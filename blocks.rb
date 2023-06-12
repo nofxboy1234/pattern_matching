@@ -255,8 +255,8 @@ foo(10, 20, 30)
 foo(10, 20, 30, d: 40, e: 50)
 foo(10, d: 40, e: 50)
 foo([10, 20, 30])
-foo(*[10, 20, 30])
-opts = {d: 40, e: 50}
+foo(10, 20, 30)
+opts = { d: 40, e: 50 }
 foo(10, opts, f: 60)
 foo(10, **opts, f: 60)
 
@@ -266,23 +266,33 @@ def foo4(regular, a:, b:)
   puts "b: #{b}"
 end
 foo4('regular argument', a: 12, b: 13)
-foo4('regular argument', **{a: 12, b: 13})
-hash = {a: 12, b: 13}
+foo4('regular argument', **{ a: 12, b: 13 })
+hash = { a: 12, b: 13 }
 foo4('regular argument', **hash)
 
 def foo5(a, b)
   puts "a: #{a}"
   puts "b: #{b}"
 end
-hash = {a: 12, b: 13}
+hash = { a: 12, b: 13 }
 # foo5(**hash) # err
 def foo6(a)
   puts "a: #{a}"
 end
-hash = {a: 12, b: 13}
+hash = { a: 12, b: 13 }
 foo6(**hash) # err
 
-
+def logger
+  zz = 500
+  yield
+end
+zz = 1
+xx = 3
+logger do
+  puts 'hello'
+  puts "zz: #{zz}"
+  puts "xx: #{xx}"
+end
 
 # require 'faker'
 # class FakePerson
