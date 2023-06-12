@@ -527,3 +527,33 @@
 # m2
 # p $a
 # #=> [:m1, :m2]
+
+# p = proc { |x, y| puts "x=#{x}, y=#{y}" }
+# p.call(1, 2)      #=> "x=1, y=2"
+# p.call([1, 2])    #=> "x=1, y=2", array deconstructed
+# p.call(1, 2, 8)   #=> "x=1, y=2", extra argument discarded
+# p.call(1)         #=> "x=1, y=", nil substituted instead of error
+
+# l = ->(x, y) { puts "x=#{x}, y=#{y}" }
+# l.call(1, 2)      #=> "x=1, y=2"
+# # l.call([1, 2])    # ArgumentError: wrong number of arguments (given 1, expected 2)
+# # l.call(1, 2, 8)   # ArgumentError: wrong number of arguments (given 3, expected 2)
+# # l.call(1)         # ArgumentError: wrong number of arguments (given 1, expected 2)
+
+# def test_return
+#   -> { return 3 }.call      # just returns from lambda into method body
+#   proc { return 4 }.call    # returns from method
+#   5
+# end
+# p test_return # => 4, return from proc
+
+# def test
+#   [[1, 2], [3, 4], [5, 6]].map {|a, b| return a if a + b > 10 }
+#                             #  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# end
+# p test
+
+# p = proc { |x, _y| p x }
+# l = ->(x, _y) { p x }
+# [[1, 2], [3, 4]].map(&p) #=> [1, 3]
+# [[1, 2], [3, 4]].map(&l) # ArgumentError: wrong number of arguments (given 1, expected 2)
