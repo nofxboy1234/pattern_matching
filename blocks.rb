@@ -573,3 +573,17 @@
 # end
 # C.new.f(1,2)       #=> ArgumentError
 
+class Greeter
+  def initialize(greeting)
+    @greeting = greeting
+  end
+
+  def to_proc
+    proc { |name| "#{@greeting}, #{name}!" }
+  end
+end
+
+hi = Greeter.new('Hi')
+hey = Greeter.new('Hey')
+p %w[Bob Jane].map(&hi)    #=> ["Hi, Bob!", "Hi, Jane!"]
+p %w[Bob Jane].map(&hey)   #=> ["Hey, Bob!", "Hey, Jane!"]
