@@ -558,3 +558,9 @@
 # [[1, 2], [3, 4]].map(&p) #=> [1, 3]
 # [[1, 2], [3, 4]].map(&l) # ArgumentError: wrong number of arguments (given 1, expected 2)
 
+# class C
+#   define_method(:e, &proc {})
+# end
+# # C.new.e(1, 2) #=> ArgumentError
+# p C.new.method(:e).to_proc.lambda?   #=> true
+
