@@ -282,21 +282,27 @@
 # hash = { a: 12, b: 13 }
 # foo6(**hash) # err
 
-def logger
-  zz = 500
-  yield
-end
-zz = 1
-xx = 3
-# logger do
-#   puts 'hello'
-#   puts "zz: #{zz}"
-#   puts "xx: #{xx}"
+# def logger
+#   zz = 500
+#   yield
 # end
-hello = -> { puts "zz: #{zz}" }
-logger(&hello)
-zz = 4
-logger(&hello)
+# zz = 1
+# xx = 3
+# # logger do
+# #   puts 'hello'
+# #   puts "zz: #{zz}"
+# #   puts "xx: #{xx}"
+# # end
+# hello = -> { puts "zz: #{zz}" }
+# logger(&hello)
+# zz = 4
+# logger(&hello)
+
+marco = 'polo'
+game = -> { puts marco }
+game.call
+marco = 'rubio'
+game.call
 
 # a = ->(x) { puts x }
 # a.call # err
