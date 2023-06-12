@@ -369,11 +369,22 @@
 # a = [1, 2]
 # a.hello
 
-def gen_times(factor)
-  Proc.new { |n| n * factor } # remembers the value of factor at the moment of creation
-end
-times3 = gen_times(3)
-times5 = gen_times(5)
-p times3.call(12)
-p times5.call(5)
-p times3.call(times5.call(4))
+# def gen_times(factor)
+#   Proc.new { |n| n * factor } # remembers the value of factor at the moment of creation
+# end
+# times3 = gen_times(3)
+# times5 = gen_times(5)
+# p times3.call(12)
+# p times5.call(5)
+# p times3.call(times5.call(4))
+
+# proc2 = proc { |x| x**2 }
+# def make_proc(&block)
+#   block
+# end
+# proc3 = make_proc {|x| x**2 }
+# p proc3
+# p proc3.call(4)
+
+# lambda1 = lambda { |x| x**2 }
+# lambda2 = ->(x) { x**2 }
