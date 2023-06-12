@@ -612,9 +612,39 @@
 # end
 # p m2 # ok
 
-def m1(&) = b
+# def m1(&b) = b
 
-def m2
-  m1 { return }.call
-end
-m2 # ok
+# def m2
+#   m1 { return }.call
+# end
+# p m2 # ok
+
+# def m1(&b) = b
+
+# def m2
+#   m1 { break }.call
+# end
+# m2 # LocalJumpError
+
+# def m1(&b) = b
+
+# def m2
+#   m1 { return }
+# end
+# m2.call # LocalJumpError
+
+# def m1(&b) = b
+
+# def m2
+#   m1 { break }
+# end
+# m2.call # LocalJumpError
+
+# Explicit parameter:
+# %w[test me please].each { |str| puts str.upcase } # prints TEST, ME, PLEASE
+# p(1..5).map { |i| i**2 } # => [1, 4, 9, 16, 25]
+
+# Implicit parameter:
+# %w[test me please].each { puts _1.upcase } # prints TEST, ME, PLEASE
+# p (1..5).map { _1**2 } # => [1, 4, 9, 16, 25]
+
